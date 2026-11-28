@@ -121,7 +121,7 @@
           </div>
 
           <div class="results-bar">
-            <span id="results-summary" class="results-summary">Map base initialized (FCSIT)</span>
+            <span id="results-summary" class="results-summary">FCSIT Map ready (3.1282, 101.6506)</span>
           </div>
 
           <div id="facility-list" class="facility-list">
@@ -134,7 +134,7 @@
               </div>
               <h3 id="empty-state-title" class="empty-title">No facilities loaded yet</h3>
               <p id="empty-state-desc" class="empty-desc">
-                Leaflet &amp; OpenStreetMap base is ready. Facility markers and live search will populate in T16–T19.
+                T16 FCSIT map active at (3.1282, 101.6506). Custom category pins will populate in T17.
               </p>
               <button id="btn-reset-filters" class="btn btn-secondary btn-sm" type="button" hidden>
                 Reset Filters
@@ -153,20 +153,38 @@
           <p class="map-fallback-desc">Check network access to the Leaflet CDN / OpenStreetMap tiles and reload.</p>
         </div>
 
-        <button
-          id="btn-center-map"
-          class="map-control-btn"
-          type="button"
-          title="Center map on FCSIT"
-          aria-label="Center map on FCSIT"
-        >
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <circle cx="12" cy="12" r="7" />
-            <circle cx="12" cy="12" r="2" fill="currentColor" />
-            <path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke-linecap="round" />
-          </svg>
-          <span>Center FCSIT</span>
-        </button>
+        <div class="map-toolbar" role="group" aria-label="Map navigation controls">
+          <button
+            id="btn-center-map"
+            class="map-control-btn"
+            type="button"
+            title="Center map on FCSIT UM (3.1282, 101.6506)"
+            aria-label="Center map on FCSIT"
+          >
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="7" />
+              <circle cx="12" cy="12" r="2" fill="currentColor" />
+              <path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke-linecap="round" />
+            </svg>
+            <span>Center FCSIT</span>
+          </button>
+
+          <button
+            id="btn-locate-me"
+            class="map-control-btn"
+            type="button"
+            title="Use my GPS location"
+            aria-label="Locate me"
+          >
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <polygon points="3 11 22 2 13 21 11 13 3 11" stroke-linejoin="round" />
+            </svg>
+            <span class="map-btn-label">My Location</span>
+          </button>
+        </div>
+
+        <div id="map-coords-pill" class="map-coords-pill" aria-live="polite">3.1282, 101.6506 · Z17</div>
+        <div id="map-toast" class="map-toast" role="status" aria-live="polite" hidden></div>
 
         <button
           id="btn-fab-report"

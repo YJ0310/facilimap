@@ -390,11 +390,17 @@ a:focus-visible {
   color: var(--ink-muted);
 }
 
-.map-control-btn {
+.map-toolbar {
   position: absolute;
   top: 12px;
   left: 54px;
   z-index: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.map-control-btn {
   height: 34px;
   padding: 0 12px;
   border: 1px solid var(--border-strong);
@@ -408,10 +414,47 @@ a:focus-visible {
   gap: 6px;
   cursor: pointer;
   box-shadow: var(--shadow-sm);
+  white-space: nowrap;
 }
 
 .map-control-btn:hover {
   background: var(--bg-subtle);
+}
+
+.map-coords-pill {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  z-index: 500;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border-default);
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--ink-secondary);
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.76rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+  pointer-events: none;
+}
+
+.map-toast {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 700;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.92);
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-md);
+  white-space: nowrap;
 }
 
 .fab-report-btn {
@@ -607,10 +650,38 @@ a:focus-visible {
     height: auto;
   }
 
-  .map-control-btn {
+  .map-toolbar {
     top: 12px;
     left: auto;
     right: 12px;
+    gap: 6px;
+  }
+
+  .map-control-btn {
+    height: 36px;
+    padding: 0 10px;
+    font-size: 0.78rem;
+  }
+
+  .map-btn-label {
+    display: none;
+  }
+
+  .map-coords-pill {
+    top: auto;
+    bottom: 24px;
+    left: 10px;
+    right: auto;
+    height: 24px;
+    padding: 0 8px;
+    font-size: 0.68rem;
+  }
+
+  .map-toast {
+    bottom: 64px;
+    max-width: calc(100% - 24px);
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .fab-report-btn {

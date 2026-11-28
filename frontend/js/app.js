@@ -1,13 +1,15 @@
 import { FACILIMAP_CONFIG } from './config.js';
+import { createCampusMap } from './map.js';
 
 const state = {
   activeView: 'map',
   activeCategory: 'all',
   searchQuery: '',
   sheetExpanded: false,
-  map: null,
-  tileLayer: null,
+  mapController: null,
 };
+
+let toastTimer = null;
 
 function getElements() {
   return {
@@ -24,6 +26,9 @@ function getElements() {
     sheetToggleBtn: document.getElementById('sheet-toggle-btn'),
     sheetPeekHint: document.querySelector('.sheet-peek-hint'),
     centerMapBtn: document.getElementById('btn-center-map'),
+    locateMeBtn: document.getElementById('btn-locate-me'),
+    coordsPill: document.getElementById('map-coords-pill'),
+    mapToast: document.getElementById('map-toast'),
     mapFallback: document.getElementById('map-fallback'),
     facilityModal: document.getElementById('facility-modal'),
     modalCloseBtn: document.getElementById('modal-close-btn'),
@@ -31,31 +36,35 @@ function getElements() {
   };
 }
 
-function initLeafletMap(els) {
-  if (typeof window.L !== 'object' || !window.L.map) {
+function showMapToast(els, message) {
+  if (!els.mapToast) return;
+  els.mapToast.textContent = message;
+  els.mapToast.hidden = false;
+  window.clearTimeout(toastTimer);
+  toastTimer = window.setTimeout(() => {
+    els.mapToast.hidden = true;
+  }, 2800);
+}
+
+function updateCoordsReadout(els, viewport) {
+  if (!els.coordsPill || !viewport) return;
+  els.coordsPill.textContent = `${viewport.lat.toFixed(4)}, ${viewport.lng.toFixed(4)} · Z${viewport.zoom}`;
+}
+
+function initCampusMap(els) {
+  const controller = createCampusMap('map', FACILIMAP_CONFIG, {
+    onViewportChange: (viewport) => updateCoordsReadout(els, viewport),
+    onStatusMessage: (msg) => showMapToast(els, msg),
+  });
+
+  if (!controller) {
     if (els.mapFallback) els.mapFallback.hidden = false;
     if (els.statusPillText) els.statusPillText.textContent = 'Map Offline';
     return null;
   }
 
-  const map = window.L.map('map', {
-    center: FACILIMAP_CONFIG.defaultCenter,
-    zoom: FACILIMAP_CONFIG.defaultZoom,
-    minZoom: FACILIMAP_CONFIG.minZoom,
-    maxZoom: FACILIMAP_CONFIG.maxZoom,
-    zoomControl: true,
-  });
-
-  const tileLayer = window.L.tileLayer(FACILIMAP_CONFIG.osmTileUrl, {
-    minZoom: FACILIMAP_CONFIG.minZoom,
-    maxZoom: FACILIMAP_CONFIG.maxZoom,
-    attribution: FACILIMAP_CONFIG.osmAttribution,
-  });
-
-  tileLayer.addTo(map);
-  state.map = map;
-  state.tileLayer = tileLayer;
-  return map;
+  state.mapController = controller;
+  return controller;
 }
 
 function switchView(viewName, els) {
@@ -79,8 +88,8 @@ function switchView(viewName, els) {
     }
   });
 
-  if (viewName === 'map' && state.map) {
-    window.requestAnimationFrame(() => state.map.invalidateSize());
+  if (viewName === 'map' && state.mapController) {
+    window.requestAnimationFrame(() => state.mapController.invalidateSize());
   }
 }
 
@@ -96,19 +105,19 @@ function updateFilterUI(els) {
 
   if (els.resultsSummary) {
     els.resultsSummary.textContent = hasFilter
-      ? 'Filters active (awaiting T16/T17 facility data)'
-      : 'Map base initialized (FCSIT)';
+      ? 'Filters active (awaiting T17 facility pins)'
+      : 'FCSIT Map ready (3.1282, 101.6506)';
   }
 
   if (els.emptyTitle && els.emptyDesc) {
     if (hasFilter) {
       els.emptyTitle.textContent = 'No matching facilities yet';
       els.emptyDesc.textContent =
-        'Filter state is active. Live keyword search and facility markers will be wired in T16–T19.';
+        'Filter state is active. Custom category pins and live search will populate in T17–T19.';
     } else {
       els.emptyTitle.textContent = 'No facilities loaded yet';
       els.emptyDesc.textContent =
-        'Leaflet & OpenStreetMap base is ready. Facility markers and live search will populate in T16–T19.';
+        'T16 FCSIT map active at (3.1282, 101.6506). Custom category pins will populate in T17.';
     }
   }
 }
@@ -168,11 +177,13 @@ function bindEvents(els) {
 
   if (els.centerMapBtn) {
     els.centerMapBtn.addEventListener('click', () => {
-      if (state.map) {
-        state.map.setView(FACILIMAP_CONFIG.defaultCenter, FACILIMAP_CONFIG.defaultZoom, {
-          animate: true,
-        });
-      }
+      state.mapController?.centerOnFcsit();
+    });
+  }
+
+  if (els.locateMeBtn) {
+    els.locateMeBtn.addEventListener('click', () => {
+      state.mapController?.locateUser();
     });
   }
 
@@ -184,8 +195,8 @@ function bindEvents(els) {
       if (els.sheetPeekHint) {
         els.sheetPeekHint.textContent = state.sheetExpanded ? 'Tap to collapse' : 'Tap to expand';
       }
-      if (state.map) {
-        window.setTimeout(() => state.map.invalidateSize(), 240);
+      if (state.mapController) {
+        window.setTimeout(() => state.mapController.invalidateSize(), 240);
       }
     });
   }
@@ -214,7 +225,7 @@ async function checkApiHealth(els) {
       return true;
     }
   } catch {
-    // Backend may be stopped during frontend-only Setup (T10).
+    // Backend may be stopped during frontend-only development.
   } finally {
     window.clearTimeout(timer);
   }
@@ -223,7 +234,7 @@ async function checkApiHealth(els) {
 
 function bootstrap() {
   const els = getElements();
-  initLeafletMap(els);
+  initCampusMap(els);
   bindEvents(els);
   updateFilterUI(els);
 
@@ -234,9 +245,15 @@ function bootstrap() {
   window.FaciliMapApp = {
     config: FACILIMAP_CONFIG,
     get map() {
-      return state.map;
+      return state.mapController?.map ?? null;
     },
-    getState: () => ({ ...state, map: undefined, tileLayer: undefined }),
+    get facilityLayer() {
+      return state.mapController?.facilityLayer ?? null;
+    },
+    centerOnFcsit: () => state.mapController?.centerOnFcsit(),
+    locateUser: () => state.mapController?.locateUser(),
+    getViewport: () => state.mapController?.getViewport() ?? null,
+    getState: () => ({ ...state, mapController: undefined }),
     switchView: (viewName) => switchView(viewName, els),
     checkApiHealth: () => checkApiHealth(els),
   };

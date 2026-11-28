@@ -1,0 +1,381 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1120" width="1920" height="1120" font-family="Segoe UI, Inter, Arial, sans-serif">
+  <defs>
+    <filter id="shadow-sm" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0F172A" flood-opacity="0.08"/>
+    </filter>
+    <filter id="shadow-md" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#0F172A" flood-opacity="0.16"/>
+    </filter>
+    <filter id="shadow-lg" x="-12%" y="-12%" width="124%" height="124%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#0F172A" flood-opacity="0.24"/>
+    </filter>
+
+    <!-- Reusable Category Icon Symbols (explicit stroke/fill, no currentColor) -->
+    <g id="icon-water-stroke">
+      <path d="M11 3.5 C11 3.5 5.5 10 5.5 13.5 C5.5 16.5 8 19 11 19 C14 19 16.5 16.5 16.5 13.5 C16.5 10 11 3.5 11 3.5 Z" fill="none" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M8.5 14 C8.5 15.5 9.6 16.5 11 16.5" fill="none" stroke-width="1.6" stroke-linecap="round"/>
+    </g>
+    <g id="icon-search">
+      <circle cx="9" cy="9" r="5.5" fill="none" stroke="#64748B" stroke-width="1.8"/>
+      <line x1="13" y1="13" x2="17" y2="17" stroke="#64748B" stroke-width="1.8" stroke-linecap="round"/>
+    </g>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect x="0" y="0" width="1920" height="1120" fill="#F1F5F9"/>
+
+  <!-- ===================================================================== -->
+  <!-- TOP TITLE & STATUS VOCABULARY LEGEND HEADER                           -->
+  <!-- ===================================================================== -->
+  <rect x="40" y="18" width="1840" height="76" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="64" y="48" font-size="22" font-weight="700" fill="#0F172A">FaciliMap — Screen 2: Facility Details Wireframe (T09)</text>
+  <text x="64" y="73" font-size="13" fill="#475569">WIA2006 Group 4 · Spirit Systems | Desktop Modal (1440px) &amp; Mobile Sheet (375px) · Aligned with T07, T08, T26, T28, T36 &amp; T44</text>
+
+  <text x="1150" y="60" font-size="11.5" font-weight="700" fill="#475569" letter-spacing="0.4">STATUS STATES:</text>
+  <rect x="1264" y="41" width="98" height="30" rx="15" fill="#DCFCE7" stroke="#86EFAC" stroke-width="1.2"/>
+  <text x="1313" y="60" font-size="12" font-weight="700" fill="#166534" text-anchor="middle">Operational</text>
+
+  <rect x="1372" y="41" width="104" height="30" rx="15" fill="#FEF3C7" stroke="#FCD34D" stroke-width="1.2"/>
+  <text x="1424" y="60" font-size="12" font-weight="700" fill="#92400E" text-anchor="middle">Maintenance</text>
+
+  <rect x="1486" y="41" width="76" height="30" rx="15" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1.2"/>
+  <text x="1524" y="60" font-size="12" font-weight="700" fill="#991B1B" text-anchor="middle">Closed</text>
+
+  <rect x="1578" y="38" width="282" height="36" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="1719" y="60" font-size="12" font-weight="600" fill="#334155" text-anchor="middle">T08 Schema: FACILITY + ISSUE_REPORT</text>
+
+
+  <!-- ===================================================================== -->
+  <!-- LEFT FRAME: DESKTOP MODAL WIREFRAME (1440 x 900)                      -->
+  <!-- ===================================================================== -->
+  <text x="44" y="114" font-size="12" font-weight="700" fill="#475569" letter-spacing="0.8">DESKTOP VIEWPORT (1440 × 900 · T26 OVERLAY MODAL)</text>
+
+  <!-- Outer Browser Shell -->
+  <rect x="40" y="124" width="1320" height="856" rx="12" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.5" filter="url(#shadow-sm)"/>
+
+  <!-- Browser Chrome Bar -->
+  <path d="M40 136 Q40 124 52 124 L1348 124 Q1360 124 1360 136 L1360 162 L40 162 Z" fill="#E2E8F0"/>
+  <line x1="40" y1="162" x2="1360" y2="162" stroke="#CBD5E1" stroke-width="1"/>
+  <circle cx="64" cy="143" r="5" fill="#94A3B8"/>
+  <circle cx="82" cy="143" r="5" fill="#94A3B8"/>
+  <circle cx="100" cy="143" r="5" fill="#94A3B8"/>
+  <rect x="130" y="130" width="1120" height="26" rx="6" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="146" y="147" font-size="12" font-family="Consolas, monospace" fill="#475569">http://localhost:5173/?facility=101</text>
+  <rect x="1264" y="132" width="78" height="22" rx="5" fill="#CBD5E1"/>
+  <text x="1303" y="147" font-size="11" font-weight="700" fill="#334155" text-anchor="middle">1440px</text>
+
+  <!-- Muted Background Screen 1 Context -->
+  <rect x="40" y="162" width="1320" height="62" fill="#FFFFFF"/>
+  <line x1="40" y1="224" x2="1360" y2="224" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="96" y="199" font-size="16" font-weight="700" fill="#94A3B8">FaciliMap</text>
+  <rect x="316" y="176" width="460" height="34" rx="8" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <rect x="40" y="224" width="380" height="756" fill="#F8FAFC"/>
+  <rect x="420" y="224" width="940" height="756" fill="#E8EEF5"/>
+  <!-- Muted Background Sidebar Skeletons & Map Outlines -->
+  <rect x="58" y="260" width="344" height="110" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <rect x="58" y="384" width="344" height="110" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <rect x="58" y="508" width="344" height="110" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <path d="M424 788 Q700 758 920 600 T1356 364" fill="none" stroke="#FFFFFF" stroke-width="24" stroke-linecap="butt"/>
+  <rect x="540" y="340" width="240" height="170" rx="8" fill="#F1F5F9" stroke="#CBD5E1"/>
+  <rect x="1080" y="520" width="210" height="130" rx="8" fill="#F1F5F9" stroke="#CBD5E1"/>
+
+  <!-- Translucent Modal Backdrop Overlay -->
+  <rect x="40" y="162" width="1320" height="818" fill="#0F172A" fill-opacity="0.42"/>
+
+  <!-- ===================================================================== -->
+  <!-- CENTERED DESKTOP FACILITY DETAIL MODAL (T26)                          -->
+  <!-- ===================================================================== -->
+  <rect x="300" y="204" width="800" height="692" rx="16" fill="#FFFFFF" stroke="#64748B" stroke-width="1.5" filter="url(#shadow-lg)"/>
+
+  <!-- Modal Header -->
+  <circle cx="348" cy="246" r="21" fill="#2563EB"/>
+  <g transform="translate(333, 231) scale(1.35)"><use href="#icon-water-stroke" stroke="#FFFFFF"/></g>
+
+  <text x="382" y="241" font-size="20" font-weight="700" fill="#0F172A">Block A Water Dispenser</text>
+  <rect x="634" y="223" width="68" height="22" rx="6" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="668" y="238" font-size="11" font-family="Consolas, monospace" font-weight="700" fill="#475569" text-anchor="middle">ID #101</text>
+
+  <!-- Category + Status Pills -->
+  <rect x="382" y="253" width="214" height="24" rx="12" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1"/>
+  <text x="489" y="269" font-size="11.5" font-weight="600" fill="#1D4ED8" text-anchor="middle">Water Dispenser · water_dispenser</text>
+
+  <rect x="606" y="253" width="92" height="24" rx="12" fill="#DCFCE7" stroke="#86EFAC" stroke-width="1"/>
+  <text x="652" y="269" font-size="11.5" font-weight="700" fill="#166534" text-anchor="middle">Operational</text>
+
+  <!-- Close Button (Esc) -->
+  <rect x="1040" y="224" width="36" height="36" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="1058" y="248" font-size="18" font-weight="700" fill="#475569" text-anchor="middle">×</text>
+  <text x="1058" y="274" font-size="10" fill="#64748B" text-anchor="middle">Esc</text>
+
+  <!-- Callout 1 -->
+  <circle cx="300" cy="204" r="11" fill="#0F172A"/>
+  <text x="300" y="208" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+
+  <line x1="300" y1="292" x2="1100" y2="292" stroke="#E2E8F0" stroke-width="1.5"/>
+
+  <!-- 2-Column Metadata Section -->
+  <!-- LEFT COLUMN: T08 FACILITY Fields -->
+  <text x="328" y="318" font-size="11" font-weight="700" fill="#64748B" letter-spacing="0.5">LOCATION &amp; ACCESS (T08 FACILITY)</text>
+  <circle cx="684" cy="314" r="11" fill="#0F172A"/>
+  <text x="684" y="318" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+
+  <rect x="328" y="328" width="370" height="278" rx="10" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>
+
+  <text x="346" y="356" font-size="12" font-weight="600" fill="#64748B">Building</text>
+  <text x="462" y="356" font-size="12.5" font-weight="700" fill="#0F172A">FCSIT Block A</text>
+  <line x1="346" y1="370" x2="680" y2="370" stroke="#E2E8F0" stroke-width="1"/>
+
+  <text x="346" y="394" font-size="12" font-weight="600" fill="#64748B">Floor</text>
+  <text x="462" y="394" font-size="12.5" font-weight="700" fill="#0F172A">Level 1 (Main Lobby Corridor)</text>
+  <line x1="346" y1="408" x2="680" y2="408" stroke="#E2E8F0" stroke-width="1"/>
+
+  <text x="346" y="432" font-size="12" font-weight="600" fill="#64748B">Opening Hours</text>
+  <text x="462" y="432" font-size="12.5" font-weight="700" fill="#0F172A">07:00 – 22:00 (Mon–Sun)</text>
+  <line x1="346" y1="446" x2="680" y2="446" stroke="#E2E8F0" stroke-width="1"/>
+
+  <text x="346" y="470" font-size="12" font-weight="600" fill="#64748B">Coordinates</text>
+  <text x="462" y="470" font-size="12" font-family="Consolas, monospace" fill="#0F172A">3.12824, 101.65067</text>
+  <rect x="626" y="454" width="54" height="24" rx="5" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1"/>
+  <text x="653" y="470" font-size="11" font-weight="600" fill="#334155" text-anchor="middle">Copy</text>
+  <line x1="346" y1="486" x2="680" y2="486" stroke="#E2E8F0" stroke-width="1"/>
+
+  <text x="346" y="512" font-size="12" font-weight="700" fill="#334155">Accessibility &amp; Facility Notes</text>
+  <text x="346" y="534" font-size="12" fill="#475569">• Cold &amp; ambient bottle refill nozzles</text>
+  <text x="346" y="555" font-size="12" fill="#475569">• Step-free access via Block A ground ramp</text>
+  <text x="346" y="576" font-size="12" fill="#475569">• GPS pinned at unit dispenser entrance</text>
+
+  <!-- RIGHT COLUMN: Mini Map Preview + T28 Verification Card -->
+  <text x="716" y="318" font-size="11" font-weight="700" fill="#64748B" letter-spacing="0.5">MINI MAP PREVIEW &amp; VERIFICATION</text>
+
+  <!-- Mini Map Box -->
+  <rect x="716" y="328" width="358" height="156" rx="10" fill="#E8EEF5" stroke="#CBD5E1" stroke-width="1.2"/>
+  <line x1="780" y1="328" x2="780" y2="484" stroke="#DCE4EE" stroke-width="1"/>
+  <line x1="895" y1="328" x2="895" y2="484" stroke="#DCE4EE" stroke-width="1"/>
+  <line x1="1010" y1="328" x2="1010" y2="484" stroke="#DCE4EE" stroke-width="1"/>
+  <line x1="716" y1="406" x2="1074" y2="406" stroke="#DCE4EE" stroke-width="1"/>
+  <path d="M720 472 Q895 452 1070 398" fill="none" stroke="#FFFFFF" stroke-width="14" stroke-linecap="butt"/>
+  <rect x="810" y="354" width="166" height="90" rx="6" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.2"/>
+  <text x="893" y="434" font-size="11" font-weight="700" fill="#475569" text-anchor="middle">FCSIT Block A</text>
+
+  <!-- Pin on Mini Map -->
+  <g transform="translate(876, 366)">
+    <circle cx="16" cy="16" r="22" fill="#2563EB" fill-opacity="0.18"/>
+    <path d="M16 0 C7.2 0 0 7.2 0 16 C0 27 16 38 16 38 C16 38 32 27 32 16 C32 7.2 24.8 0 16 0 Z" fill="#2563EB" stroke="#FFFFFF" stroke-width="2"/>
+    <g transform="translate(6, 5) scale(0.9)"><use href="#icon-water-stroke" stroke="#FFFFFF"/></g>
+  </g>
+
+  <rect x="954" y="338" width="110" height="26" rx="6" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1" filter="url(#shadow-sm)"/>
+  <text x="1009" y="355" font-size="11" font-weight="600" fill="#1E293B" text-anchor="middle">◎ Center Map</text>
+  <rect x="1002" y="464" width="70" height="18" rx="4" fill="#FFFFFF" fill-opacity="0.9"/>
+  <text x="1037" y="476" font-size="9.5" fill="#475569" text-anchor="middle">Leaflet | OSM</text>
+
+  <!-- Verification Card (T28) -->
+  <rect x="716" y="496" width="358" height="110" rx="10" fill="#ECFDF5" stroke="#6EE7B7" stroke-width="1.4"/>
+  <circle cx="1074" cy="496" r="11" fill="#0F172A"/>
+  <text x="1074" y="500" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+
+  <circle cx="742" cy="524" r="11" fill="#059669"/>
+  <path d="M737 524 L740.5 527.5 L747 520.5" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="762" y="528" font-size="13" font-weight="700" fill="#065F46">Verified Status</text>
+
+  <text x="732" y="554" font-size="12.5" font-weight="700" fill="#0F172A">Last Verified: 2026-11-28 15:10 (2h ago)</text>
+  <text x="732" y="576" font-size="11" font-weight="600" fill="#047857">Field: last_verified_at · Updated via Admin "Verify Now" (T28)</text>
+  <text x="732" y="594" font-size="10.5" fill="#475569">Helps campus users trust recent operational availability</text>
+
+  <!-- ===================================================================== -->
+  <!-- RECENT FACILITY REPORTS STRIP (T08 ISSUE_REPORT)                      -->
+  <!-- ===================================================================== -->
+  <text x="328" y="636" font-size="11" font-weight="700" fill="#64748B" letter-spacing="0.5">RECENT REPORTS FOR THIS FACILITY (T08 ISSUE_REPORT)</text>
+  <circle cx="678" cy="632" r="11" fill="#0F172A"/>
+  <text x="678" y="636" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+
+  <rect x="934" y="619" width="140" height="24" rx="12" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="1004" y="635" font-size="11" font-weight="700" fill="#334155" text-anchor="middle">0 Open · 1 Resolved</text>
+
+  <!-- Sample Resolved Report Row -->
+  <rect x="328" y="652" width="746" height="48" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="346" y="681" font-size="12" font-family="Consolas, monospace" font-weight="700" fill="#475569">#R-014</text>
+  <text x="412" y="681" font-size="12.5" font-weight="600" fill="#0F172A">"Low water pressure on cold tap"</text>
+  <text x="876" y="681" font-size="11.5" fill="#64748B">2026-11-25</text>
+  <rect x="976" y="665" width="82" height="22" rx="11" fill="#DCFCE7" stroke="#86EFAC" stroke-width="1"/>
+  <text x="1017" y="680" font-size="11" font-weight="700" fill="#166534" text-anchor="middle">Resolved</text>
+
+  <!-- Empty State Hint -->
+  <rect x="328" y="710" width="746" height="44" rx="8" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="5,4"/>
+  <text x="701" y="736" font-size="11.5" fill="#475569" text-anchor="middle">Empty State (0 reports · T44): "No issues reported for this facility yet."</text>
+
+  <!-- Modal Footer Divider & Action Bar -->
+  <line x1="300" y1="794" x2="1100" y2="794" stroke="#E2E8F0" stroke-width="1.5"/>
+
+  <rect x="328" y="814" width="144" height="42" rx="8" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.2"/>
+  <text x="400" y="840" font-size="13" font-weight="600" fill="#1E293B" text-anchor="middle">← Back to Map</text>
+
+  <rect x="484" y="814" width="134" height="42" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="551" y="840" font-size="13" font-weight="600" fill="#334155" text-anchor="middle">Directions ↗</text>
+
+  <rect x="772" y="814" width="302" height="42" rx="8" fill="#0F172A"/>
+  <text x="923" y="840" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">⚑ Report an Issue with this Facility</text>
+  <circle cx="1074" cy="814" r="11" fill="#EA580C"/>
+  <text x="1074" y="818" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+
+  <text x="1074" y="876" font-size="11" fill="#64748B" text-anchor="end">Pre-fills facility_id=101 &amp; GPS coordinates in Screen 3 (T36)</text>
+
+
+  <!-- ===================================================================== -->
+  <!-- RIGHT FRAME: MOBILE DETAIL SHEET WIREFRAME (375 x 812 · T44)          -->
+  <!-- ===================================================================== -->
+  <text x="1450" y="114" font-size="12" font-weight="700" fill="#475569" letter-spacing="0.8">MOBILE VIEWPORT (375 × 812 · T44)</text>
+
+  <!-- Phone Bezel -->
+  <rect x="1450" y="124" width="400" height="856" rx="34" fill="#FFFFFF" stroke="#1E293B" stroke-width="6" filter="url(#shadow-md)"/>
+
+  <!-- Phone Status Bar -->
+  <rect x="1456" y="130" width="388" height="32" rx="24" fill="#FFFFFF"/>
+  <text x="1484" y="151" font-size="12" font-weight="700" fill="#0F172A">9:41</text>
+  <rect x="1612" y="137" width="76" height="16" rx="8" fill="#1E293B"/>
+  <rect x="1784" y="143" width="4" height="8" rx="1" fill="#0F172A"/>
+  <rect x="1790" y="140" width="4" height="11" rx="1" fill="#0F172A"/>
+  <rect x="1796" y="137" width="4" height="14" rx="1" fill="#0F172A"/>
+  <rect x="1808" y="140" width="20" height="11" rx="2" fill="none" stroke="#0F172A" stroke-width="1.5"/>
+  <rect x="1810" y="142" width="14" height="7" rx="1" fill="#0F172A"/>
+
+  <!-- Dimmed Mobile Map Top Peek -->
+  <rect x="1456" y="162" width="388" height="110" fill="#E8EEF5"/>
+  <rect x="1540" y="176" width="120" height="70" rx="6" fill="#F1F5F9" stroke="#CBD5E1"/>
+  <g transform="translate(1634, 174)">
+    <path d="M15 0 C6.7 0 0 6.7 0 15 C0 26 15 37 15 37 C15 37 30 26 30 15 C30 6.7 23.3 0 15 0 Z" fill="#2563EB" stroke="#FFFFFF" stroke-width="2"/>
+    <g transform="translate(6, 5) scale(0.82)"><use href="#icon-water-stroke" stroke="#FFFFFF"/></g>
+  </g>
+  <rect x="1456" y="162" width="388" height="110" fill="#0F172A" fill-opacity="0.32"/>
+
+  <!-- Expandable Mobile Detail Sheet -->
+  <path d="M1456 264 Q1456 244 1476 244 L1824 244 Q1844 244 1844 264 L1844 974 L1456 974 Z" fill="#FFFFFF" stroke="#64748B" stroke-width="1.5" filter="url(#shadow-md)"/>
+
+  <!-- Drag Handle + Callout 6 -->
+  <rect x="1626" y="256" width="48" height="5" rx="2.5" fill="#CBD5E1"/>
+  <circle cx="1828" cy="260" r="10" fill="#0F172A"/>
+  <text x="1828" y="264" font-size="10.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">6</text>
+
+  <!-- Mobile Sheet Header -->
+  <circle cx="1494" cy="296" r="16" fill="#2563EB"/>
+  <g transform="translate(1482, 284) scale(1.05)"><use href="#icon-water-stroke" stroke="#FFFFFF"/></g>
+  <text x="1520" y="294" font-size="15.5" font-weight="700" fill="#0F172A">Block A Water Dispenser</text>
+
+  <rect x="1520" y="308" width="110" height="22" rx="11" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1"/>
+  <text x="1575" y="323" font-size="10.5" font-weight="600" fill="#1D4ED8" text-anchor="middle">Water Dispenser</text>
+  <rect x="1636" y="308" width="80" height="22" rx="11" fill="#DCFCE7" stroke="#86EFAC" stroke-width="1"/>
+  <text x="1676" y="323" font-size="10.5" font-weight="700" fill="#166534" text-anchor="middle">Operational</text>
+  <text x="1726" y="323" font-size="10.5" font-family="Consolas, monospace" font-weight="700" fill="#64748B">#101</text>
+
+  <rect x="1798" y="278" width="30" height="30" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="1813" y="299" font-size="16" font-weight="700" fill="#475569" text-anchor="middle">×</text>
+
+  <line x1="1456" y1="344" x2="1844" y2="344" stroke="#E2E8F0" stroke-width="1.2"/>
+
+  <!-- Mobile Info Card (T08) -->
+  <rect x="1472" y="356" width="356" height="132" rx="10" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="1488" y="379" font-size="11.5" fill="#64748B">Building:</text>
+  <text x="1560" y="379" font-size="12" font-weight="700" fill="#0F172A">FCSIT Block A</text>
+  <text x="1488" y="402" font-size="11.5" fill="#64748B">Floor:</text>
+  <text x="1560" y="402" font-size="12" font-weight="700" fill="#0F172A">Level 1 (Main Lobby)</text>
+  <text x="1488" y="425" font-size="11.5" fill="#64748B">Hours:</text>
+  <text x="1560" y="425" font-size="12" font-weight="700" fill="#0F172A">07:00 – 22:00 (Mon–Sun)</text>
+  <text x="1488" y="448" font-size="11.5" fill="#64748B">GPS:</text>
+  <text x="1560" y="448" font-size="11.5" font-family="Consolas, monospace" fill="#0F172A">3.12824, 101.65067</text>
+  <rect x="1768" y="434" width="46" height="20" rx="4" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1"/>
+  <text x="1791" y="448" font-size="10" font-weight="600" fill="#334155" text-anchor="middle">Copy</text>
+  <text x="1488" y="473" font-size="11" fill="#475569">Notes: Cold &amp; ambient nozzles · Ramp access</text>
+  <circle cx="1828" cy="356" r="10" fill="#0F172A"/>
+  <text x="1828" y="360" font-size="10.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+
+  <!-- Mobile Verification Strip (T28) -->
+  <rect x="1472" y="498" width="356" height="56" rx="10" fill="#ECFDF5" stroke="#6EE7B7" stroke-width="1.2"/>
+  <circle cx="1494" cy="518" r="9" fill="#059669"/>
+  <path d="M1490 518 L1493 521 L1498 515" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="1510" y="522" font-size="12" font-weight="700" fill="#065F46">Last Verified: 2026-11-28 15:10 (2h ago)</text>
+  <text x="1488" y="542" font-size="10.5" fill="#047857">Updated via Admin "Verify Now" (T28)</text>
+  <circle cx="1828" cy="498" r="10" fill="#0F172A"/>
+  <text x="1828" y="502" font-size="10.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+
+  <!-- Mobile Mini Map Strip -->
+  <rect x="1472" y="564" width="356" height="92" rx="10" fill="#E8EEF5" stroke="#CBD5E1" stroke-width="1.2"/>
+  <path d="M1474 644 Q1640 626 1826 592" fill="none" stroke="#FFFFFF" stroke-width="12" stroke-linecap="butt"/>
+  <rect x="1548" y="582" width="120" height="58" rx="6" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1"/>
+  <text x="1608" y="632" font-size="10" font-weight="700" fill="#475569" text-anchor="middle">FCSIT Block A</text>
+  <g transform="translate(1594, 584)">
+    <path d="M13 0 C5.8 0 0 5.8 0 13 C0 22 13 31 13 31 C13 31 26 22 26 13 C26 5.8 20.2 0 13 0 Z" fill="#2563EB" stroke="#FFFFFF" stroke-width="1.8"/>
+    <g transform="translate(5, 4) scale(0.75)"><use href="#icon-water-stroke" stroke="#FFFFFF"/></g>
+  </g>
+  <rect x="1718" y="574" width="100" height="24" rx="6" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1"/>
+  <text x="1768" y="590" font-size="10.5" font-weight="600" fill="#1E293B" text-anchor="middle">◎ Center Map</text>
+
+  <!-- Mobile Recent Reports Card -->
+  <rect x="1472" y="666" width="356" height="106" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="1488" y="688" font-size="11.5" font-weight="700" fill="#0F172A">Recent Reports</text>
+  <rect x="1700" y="673" width="114" height="20" rx="10" fill="#F1F5F9" stroke="#CBD5E1"/>
+  <text x="1757" y="687" font-size="10" font-weight="700" fill="#334155" text-anchor="middle">0 Open · 1 Resolved</text>
+  <text x="1488" y="714" font-size="11.5" fill="#334155">#R-014 · "Low water pressure on cold tap"</text>
+  <rect x="1488" y="726" width="68" height="20" rx="10" fill="#DCFCE7" stroke="#86EFAC"/>
+  <text x="1522" y="740" font-size="10" font-weight="700" fill="#166534" text-anchor="middle">Resolved</text>
+  <text x="1566" y="740" font-size="10.5" fill="#64748B">2026-11-25 · Empty state if 0</text>
+  <circle cx="1472" cy="666" r="10" fill="#0F172A"/>
+  <text x="1472" y="670" font-size="10.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+
+  <!-- Mobile Sticky Bottom Action Footer (44px+ touch targets) -->
+  <path d="M1456 828 L1844 828 L1844 948 Q1844 974 1818 974 L1482 974 Q1456 974 1456 948 Z" fill="#FFFFFF"/>
+  <line x1="1456" y1="828" x2="1844" y2="828" stroke="#CBD5E1" stroke-width="1.2"/>
+
+  <rect x="1472" y="844" width="356" height="46" rx="10" fill="#0F172A"/>
+  <text x="1650" y="872" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">⚑ Report an Issue with this Facility</text>
+  <circle cx="1472" cy="844" r="10" fill="#EA580C"/>
+  <text x="1472" y="848" font-size="10.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+
+  <rect x="1472" y="902" width="172" height="44" rx="10" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="1558" y="929" font-size="12.5" font-weight="600" fill="#1E293B" text-anchor="middle">Directions ↗</text>
+
+  <rect x="1656" y="902" width="172" height="44" rx="10" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="1742" y="929" font-size="12.5" font-weight="600" fill="#1E293B" text-anchor="middle">Close</text>
+
+
+  <!-- ===================================================================== -->
+  <!-- BOTTOM ANNOTATION BAR (y=1002..1100)                                  -->
+  <!-- ===================================================================== -->
+  <rect x="40" y="1002" width="1840" height="98" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="64" y="1026" font-size="11.5" font-weight="700" fill="#475569" letter-spacing="0.6">WIREFRAME ANNOTATIONS &amp; DOWNSTREAM TASK MAPPING (T09 → T08, T26, T28, T36, T44)</text>
+
+  <!-- Annotation 1 -->
+  <circle cx="76" cy="1052" r="10" fill="#0F172A"/>
+  <text x="76" y="1056" font-size="10.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+  <text x="94" y="1055" font-size="12" font-weight="700" fill="#0F172A">T26 Facility Detail Modal</text>
+  <text x="94" y="1073" font-size="11" fill="#64748B">Overlay modal; Esc / × returns to Map</text>
+
+  <!-- Annotation 2 -->
+  <circle cx="378" cy="1052" r="10" fill="#0F172A"/>
+  <text x="378" y="1056" font-size="10.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+  <text x="396" y="1055" font-size="12" font-weight="700" fill="#0F172A">T08 FACILITY Fields</text>
+  <text x="396" y="1073" font-size="11" fill="#64748B">building, floor, hours, lat/lng, status</text>
+
+  <!-- Annotation 3 -->
+  <circle cx="678" cy="1052" r="10" fill="#0F172A"/>
+  <text x="678" y="1056" font-size="10.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+  <text x="696" y="1055" font-size="12" font-weight="700" fill="#0F172A">T28 Last Verified Badge</text>
+  <text x="696" y="1073" font-size="11" fill="#64748B">Displays last_verified_at timestamp</text>
+
+  <!-- Annotation 4 -->
+  <circle cx="988" cy="1052" r="10" fill="#0F172A"/>
+  <text x="988" y="1056" font-size="10.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+  <text x="1006" y="1055" font-size="12" font-weight="700" fill="#0F172A">T08 Linked Issue History</text>
+  <text x="1006" y="1073" font-size="11" fill="#64748B">Recent ISSUE_REPORT + 0-match state</text>
+
+  <!-- Annotation 5 -->
+  <circle cx="1294" cy="1052" r="10" fill="#EA580C"/>
+  <text x="1294" y="1056" font-size="10.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+  <text x="1312" y="1055" font-size="12" font-weight="700" fill="#0F172A">T36 Report Form Handoff</text>
+  <text x="1312" y="1073" font-size="11" fill="#64748B">Pre-fills facility_id &amp; GPS on Screen 3</text>
+
+  <!-- Annotation 6 -->
+  <circle cx="1596" cy="1052" r="10" fill="#0F172A"/>
+  <text x="1596" y="1056" font-size="10.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">6</text>
+  <text x="1614" y="1055" font-size="12" font-weight="700" fill="#0F172A">T44 Mobile 375px Sheet</text>
+  <text x="1614" y="1073" font-size="11" fill="#64748B">Expandable sheet + sticky 44px+ CTAs</text>
+</svg>

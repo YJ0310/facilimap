@@ -1,0 +1,415 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1120" width="1920" height="1120" font-family="Segoe UI, Inter, Arial, sans-serif">
+  <defs>
+    <filter id="shadow-sm" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0F172A" flood-opacity="0.08"/>
+    </filter>
+    <filter id="shadow-md" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#0F172A" flood-opacity="0.14"/>
+    </filter>
+
+    <g id="icon-pin-stroke">
+      <path d="M12 2 C7.6 2 4 5.6 4 10 C4 16 12 22 12 22 C12 22 20 16 20 10 C20 5.6 16.4 2 12 2 Z" fill="none" stroke-width="1.8"/>
+      <circle cx="12" cy="10" r="3" fill="none" stroke-width="1.8"/>
+    </g>
+    <g id="icon-camera">
+      <rect x="2" y="5" width="16" height="12" rx="2" fill="none" stroke="#475569" stroke-width="1.6"/>
+      <path d="M6.5 5 L8 3 L12 3 L13.5 5" fill="none" stroke="#475569" stroke-width="1.6"/>
+      <circle cx="10" cy="11" r="3" fill="none" stroke="#475569" stroke-width="1.6"/>
+    </g>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect x="0" y="0" width="1920" height="1120" fill="#F1F5F9"/>
+
+  <!-- ===================================================================== -->
+  <!-- TOP TITLE & REPORT STATUS LEGEND HEADER                               -->
+  <!-- ===================================================================== -->
+  <rect x="40" y="18" width="1840" height="76" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="64" y="48" font-size="22" font-weight="700" fill="#0F172A">FaciliMap — Screen 3: Report Form &amp; My Reports Wireframe (T09)</text>
+  <text x="64" y="73" font-size="13" fill="#475569">WIA2006 Group 4 · Spirit Systems | Desktop (1440px) &amp; Mobile (375px) · Aligned with T08, T36, T37, T38 &amp; T44</text>
+
+  <text x="1072" y="60" font-size="11.5" font-weight="700" fill="#475569" letter-spacing="0.4">REPORT STATES:</text>
+  <rect x="1184" y="41" width="84" height="30" rx="15" fill="#FEF3C7" stroke="#FCD34D" stroke-width="1.2"/>
+  <text x="1226" y="60" font-size="12" font-weight="700" fill="#92400E" text-anchor="middle">Pending</text>
+
+  <rect x="1276" y="41" width="90" height="30" rx="15" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1.2"/>
+  <text x="1321" y="60" font-size="12" font-weight="700" fill="#1E40AF" text-anchor="middle">In Review</text>
+
+  <rect x="1374" y="41" width="86" height="30" rx="15" fill="#DCFCE7" stroke="#86EFAC" stroke-width="1.2"/>
+  <text x="1417" y="60" font-size="12" font-weight="700" fill="#166534" text-anchor="middle">Resolved</text>
+
+  <rect x="1468" y="41" width="84" height="30" rx="15" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1.2"/>
+  <text x="1510" y="60" font-size="12" font-weight="700" fill="#991B1B" text-anchor="middle">Rejected</text>
+
+  <rect x="1564" y="38" width="296" height="36" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="1712" y="60" font-size="12" font-weight="600" fill="#334155" text-anchor="middle">T08: ISSUE_REPORT + ADMIN_REVIEW_LOG</text>
+
+
+  <!-- ===================================================================== -->
+  <!-- LEFT FRAME: DESKTOP VIEWPORT (1440 x 900)                             -->
+  <!-- ===================================================================== -->
+  <text x="44" y="114" font-size="12" font-weight="700" fill="#475569" letter-spacing="0.8">DESKTOP VIEWPORT (1440 × 900)</text>
+
+  <!-- Outer Browser Shell -->
+  <rect x="40" y="124" width="1320" height="856" rx="12" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.5" filter="url(#shadow-sm)"/>
+
+  <!-- Browser Chrome Bar -->
+  <path d="M40 136 Q40 124 52 124 L1348 124 Q1360 124 1360 136 L1360 162 L40 162 Z" fill="#E2E8F0"/>
+  <line x1="40" y1="162" x2="1360" y2="162" stroke="#CBD5E1" stroke-width="1"/>
+  <circle cx="64" cy="143" r="5" fill="#94A3B8"/>
+  <circle cx="82" cy="143" r="5" fill="#94A3B8"/>
+  <circle cx="100" cy="143" r="5" fill="#94A3B8"/>
+  <rect x="130" y="130" width="1120" height="26" rx="6" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="146" y="147" font-size="12" font-family="Consolas, monospace" fill="#475569">http://localhost:5173/report?facility_id=101</text>
+  <rect x="1264" y="132" width="78" height="22" rx="5" fill="#CBD5E1"/>
+  <text x="1303" y="147" font-size="11" font-weight="700" fill="#334155" text-anchor="middle">1440px</text>
+
+  <!-- Top App Navbar -->
+  <rect x="40" y="162" width="1320" height="62" fill="#FFFFFF"/>
+  <line x1="40" y1="224" x2="1360" y2="224" stroke="#CBD5E1" stroke-width="1.5"/>
+
+  <rect x="60" y="177" width="32" height="32" rx="8" fill="#0F172A"/>
+  <path d="M76 184 C72.5 184 70 186.5 70 190 C70 194.5 76 201 76 201 C76 201 82 194.5 82 190 C82 186.5 79.5 184 76 184 Z" fill="none" stroke="#FFFFFF" stroke-width="1.8"/>
+  <circle cx="76" cy="190" r="2" fill="#FFFFFF"/>
+  <text x="102" y="199" font-size="18" font-weight="700" fill="#0F172A">FaciliMap</text>
+  <rect x="196" y="181" width="84" height="24" rx="6" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="238" y="197" font-size="11" font-weight="700" fill="#475569" text-anchor="middle">FCSIT · UM</text>
+
+  <!-- Nav Tabs (Report Issue Active) -->
+  <rect x="850" y="177" width="76" height="32" rx="6" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="888" y="197" font-size="13" font-weight="600" fill="#334155" text-anchor="middle">Map</text>
+
+  <rect x="938" y="177" width="120" height="32" rx="6" fill="#0F172A"/>
+  <text x="998" y="197" font-size="13" font-weight="600" fill="#FFFFFF" text-anchor="middle">Report Issue</text>
+
+  <rect x="1070" y="177" width="116" height="32" rx="6" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="1128" y="197" font-size="13" font-weight="600" fill="#334155" text-anchor="middle">My Reports</text>
+
+  <rect x="1198" y="177" width="140" height="32" rx="6" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="1268" y="197" font-size="13" font-weight="600" fill="#334155" text-anchor="middle">Admin Dashboard</text>
+
+
+  <!-- ===================================================================== -->
+  <!-- DESKTOP LEFT COLUMN: REPORT SUBMISSION FORM (T36 + T37)               -->
+  <!-- ===================================================================== -->
+  <rect x="64" y="244" width="776" height="714" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5" filter="url(#shadow-sm)"/>
+
+  <text x="86" y="276" font-size="17" font-weight="700" fill="#0F172A">Submit a Facility Issue Report</text>
+  <rect x="596" y="257" width="222" height="26" rx="13" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1"/>
+  <text x="707" y="274" font-size="11.5" font-weight="600" fill="#1D4ED8" text-anchor="middle">Pre-filled from Details (#101)</text>
+  <line x1="64" y1="296" x2="840" y2="296" stroke="#E2E8F0" stroke-width="1.2"/>
+
+  <!-- Field 1: Linked Facility (facility_id) -->
+  <text x="86" y="320" font-size="12" font-weight="700" fill="#334155">Linked Facility (facility_id · optional)</text>
+  <text x="818" y="320" font-size="11" fill="#64748B" text-anchor="end">Select "Unlisted Location" for new spot</text>
+  <rect x="86" y="328" width="732" height="36" rx="8" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.2"/>
+  <text x="102" y="351" font-size="12.5" font-weight="600" fill="#0F172A">Block A Water Dispenser (ID #101 · Water Dispenser)</text>
+  <text x="798" y="351" font-size="13" font-weight="700" fill="#475569" text-anchor="end">▾</text>
+
+  <!-- Field 2: Draggable Report Pin Map (T37) -->
+  <text x="86" y="388" font-size="12" font-weight="700" fill="#334155">Pin Exact Issue Location (T37 Draggable Pin)</text>
+  <circle cx="386" cy="384" r="10.5" fill="#0F172A"/>
+  <text x="386" y="388" font-size="10.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+
+  <rect x="86" y="396" width="732" height="148" rx="8" fill="#E8EEF5" stroke="#94A3B8" stroke-width="1.2"/>
+  <!-- Map Grid -->
+  <g stroke="#DCE4EE" stroke-width="1">
+    <line x1="200" y1="396" x2="200" y2="544"/>
+    <line x1="350" y1="396" x2="350" y2="544"/>
+    <line x1="500" y1="396" x2="500" y2="544"/>
+    <line x1="650" y1="396" x2="650" y2="544"/>
+    <line x1="86" y1="470" x2="818" y2="470"/>
+  </g>
+  <path d="M90 532 Q420 510 814 432" fill="none" stroke="#FFFFFF" stroke-width="18" stroke-linecap="butt"/>
+  <rect x="330" y="416" width="188" height="96" rx="6" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.2"/>
+  <text x="424" y="502" font-size="11.5" font-weight="700" fill="#475569" text-anchor="middle">FCSIT Block A</text>
+
+  <!-- Draggable Pin + Tooltip -->
+  <g transform="translate(406, 428)">
+    <circle cx="18" cy="18" r="24" fill="#EA580C" fill-opacity="0.18" stroke="#EA580C" stroke-width="1.4" stroke-dasharray="3,2"/>
+    <path d="M18 0 C8 0 0 8 0 18 C0 31 18 44 18 44 C18 44 36 31 36 18 C36 8 28 0 18 0 Z" fill="#EA580C" stroke="#FFFFFF" stroke-width="2" filter="url(#shadow-sm)"/>
+    <circle cx="18" cy="17" r="5" fill="#FFFFFF"/>
+  </g>
+  <rect x="454" y="426" width="170" height="26" rx="6" fill="#0F172A" filter="url(#shadow-sm)"/>
+  <text x="539" y="443" font-size="11" font-weight="600" fill="#FFFFFF" text-anchor="middle">↔ Drag pin to exact spot</text>
+
+  <rect x="678" y="406" width="128" height="28" rx="6" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1" filter="url(#shadow-sm)"/>
+  <text x="742" y="424" font-size="11.5" font-weight="600" fill="#1E293B" text-anchor="middle">◎ Use My GPS</text>
+
+  <rect x="734" y="524" width="82" height="18" rx="4" fill="#FFFFFF" fill-opacity="0.9"/>
+  <text x="775" y="536" font-size="9.5" fill="#475569" text-anchor="middle">Leaflet | OSM</text>
+
+  <!-- Live Coordinate Readout -->
+  <rect x="86" y="550" width="732" height="30" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="102" y="569" font-size="11.5" font-family="Consolas, monospace" font-weight="700" fill="#334155">Latitude: 3.128240   |   Longitude: 101.650670</text>
+  <text x="804" y="569" font-size="11" fill="#047857" text-anchor="end">✓ Updates live on marker drag</text>
+
+  <!-- Field 3: Issue Description (T08 description) -->
+  <text x="86" y="604" font-size="12" font-weight="700" fill="#334155">Issue Description * (T08 description)</text>
+  <circle cx="318" cy="600" r="10.5" fill="#0F172A"/>
+  <text x="318" y="604" font-size="10.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+  <text x="818" y="604" font-size="11" fill="#64748B" text-anchor="end">86 / 500 chars</text>
+
+  <rect x="86" y="612" width="732" height="72" rx="8" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.2"/>
+  <text x="102" y="636" font-size="12.5" fill="#0F172A">Cold water nozzle is leaking onto the corridor floor near Block A lobby.</text>
+  <text x="102" y="656" font-size="12.5" fill="#0F172A">Puddle is forming beside the main stairwell entrance.</text>
+
+  <!-- Field 4: Photo Evidence (photo_ref) -->
+  <text x="86" y="708" font-size="12" font-weight="700" fill="#334155">Photo Evidence (photo_ref · optional)</text>
+  <rect x="86" y="716" width="732" height="40" rx="8" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <g transform="translate(100, 726)"><use href="#icon-camera"/></g>
+  <text x="128" y="741" font-size="12" font-weight="600" fill="#334155">Click or drop photo here (JPG / PNG ≤ 5MB)</text>
+  <rect x="596" y="723" width="208" height="26" rx="6" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1"/>
+  <text x="610" y="740" font-size="11.5" font-weight="600" fill="#1D4ED8">IMG_4021.jpg (1.2 MB)   ×</text>
+
+  <!-- Field 5: Required PDPA Consent Box (T36) -->
+  <rect x="86" y="772" width="732" height="94" rx="8" fill="#FFFBEB" stroke="#FCD34D" stroke-width="1.4"/>
+  <circle cx="818" cy="772" r="10.5" fill="#0F172A"/>
+  <text x="818" y="776" font-size="10.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+
+  <rect x="104" y="790" width="20" height="20" rx="4" fill="#0F172A"/>
+  <path d="M108 800 L112 804 L120 795" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="136" y="805" font-size="12.5" font-weight="700" fill="#92400E">PDPA Personal Data Consent (Required · T36)</text>
+  <text x="136" y="827" font-size="11.5" fill="#78350F">I consent to FaciliMap storing my user ID, GPS coordinates, issue description, and</text>
+  <text x="136" y="845" font-size="11.5" fill="#78350F">uploaded photo solely for campus facility verification and maintenance review.</text>
+
+  <!-- Form Submit Footer -->
+  <line x1="64" y1="882" x2="840" y2="882" stroke="#E2E8F0" stroke-width="1.2"/>
+  <rect x="86" y="898" width="118" height="42" rx="8" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.2"/>
+  <text x="145" y="924" font-size="13" font-weight="600" fill="#334155" text-anchor="middle">Cancel</text>
+
+  <text x="220" y="923" font-size="11" fill="#64748B">Disabled until description &amp; PDPA box are valid</text>
+
+  <rect x="588" y="898" width="230" height="42" rx="8" fill="#0F172A"/>
+  <text x="703" y="924" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">Submit Issue Report →</text>
+  <circle cx="818" cy="898" r="10.5" fill="#EA580C"/>
+  <text x="818" y="902" font-size="10.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+
+
+  <!-- ===================================================================== -->
+  <!-- DESKTOP RIGHT PANEL: MY REPORTS TRACKER (T38)                         -->
+  <!-- ===================================================================== -->
+  <rect x="860" y="244" width="476" height="714" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5" filter="url(#shadow-sm)"/>
+
+  <text x="882" y="274" font-size="16" font-weight="700" fill="#0F172A">My Reports Tracker (T38)</text>
+  <circle cx="1096" cy="269" r="10.5" fill="#0F172A"/>
+  <text x="1096" y="273" font-size="10.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+
+  <rect x="1226" y="256" width="88" height="24" rx="12" fill="#F1F5F9" stroke="#CBD5E1"/>
+  <text x="1270" y="272" font-size="11" font-weight="700" fill="#334155" text-anchor="middle">2 Reports</text>
+  <text x="882" y="296" font-size="11.5" fill="#64748B">Reporter: lk_student04 (USER.user_id)</text>
+
+  <!-- Filter Chips -->
+  <rect x="882" y="312" width="72" height="28" rx="14" fill="#0F172A"/>
+  <text x="918" y="330" font-size="11.5" font-weight="600" fill="#FFFFFF" text-anchor="middle">All (2)</text>
+
+  <rect x="962" y="312" width="96" height="28" rx="14" fill="#FFFFFF" stroke="#FCD34D" stroke-width="1.2"/>
+  <text x="1010" y="330" font-size="11.5" font-weight="600" fill="#92400E" text-anchor="middle">Pending (1)</text>
+
+  <rect x="1066" y="312" width="102" height="28" rx="14" fill="#FFFFFF" stroke="#86EFAC" stroke-width="1.2"/>
+  <text x="1117" y="330" font-size="11.5" font-weight="600" fill="#166534" text-anchor="middle">Resolved (1)</text>
+
+  <!-- Report Card 1: Pending -->
+  <rect x="882" y="356" width="432" height="196" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="900" y="382" font-size="12" font-family="Consolas, monospace" font-weight="700" fill="#475569">#R-019</text>
+  <rect x="1216" y="366" width="80" height="22" rx="11" fill="#FEF3C7" stroke="#FCD34D"/>
+  <text x="1256" y="381" font-size="11" font-weight="700" fill="#92400E" text-anchor="middle">Pending</text>
+
+  <text x="900" y="408" font-size="13" font-weight="700" fill="#0F172A">Block A Water Dispenser</text>
+  <text x="900" y="428" font-size="11.5" fill="#64748B">2026-11-28 17:15 · 3.12824, 101.65067 · Photo</text>
+  <text x="900" y="454" font-size="12" fill="#334155">"Cold water nozzle is leaking onto the corridor..."</text>
+
+  <!-- 3-Step Progress Tracker -->
+  <rect x="900" y="476" width="396" height="58" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+  <line x1="956" y1="496" x2="1240" y2="496" stroke="#CBD5E1" stroke-width="2"/>
+  <circle cx="956" cy="496" r="6" fill="#0F172A"/>
+  <circle cx="1098" cy="496" r="6" fill="#FFFFFF" stroke="#94A3B8" stroke-width="2"/>
+  <circle cx="1240" cy="496" r="6" fill="#FFFFFF" stroke="#94A3B8" stroke-width="2"/>
+  <text x="956" y="520" font-size="10.5" font-weight="700" fill="#0F172A" text-anchor="middle">Submitted</text>
+  <text x="1098" y="520" font-size="10.5" fill="#64748B" text-anchor="middle">In Review</text>
+  <text x="1240" y="520" font-size="10.5" fill="#64748B" text-anchor="middle">Resolved</text>
+
+  <!-- Report Card 2: Resolved -->
+  <rect x="882" y="568" width="432" height="156" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="900" y="594" font-size="12" font-family="Consolas, monospace" font-weight="700" fill="#475569">#R-014</text>
+  <rect x="1214" y="578" width="82" height="22" rx="11" fill="#DCFCE7" stroke="#86EFAC"/>
+  <text x="1255" y="593" font-size="11" font-weight="700" fill="#166534" text-anchor="middle">Resolved</text>
+
+  <text x="900" y="620" font-size="13" font-weight="700" fill="#0F172A">Block A Water Dispenser</text>
+  <text x="900" y="640" font-size="11.5" fill="#64748B">2026-11-25 10:20 · Linked Facility #101</text>
+  <text x="900" y="666" font-size="12" fill="#334155">"Low water pressure on cold tap"</text>
+  <rect x="900" y="680" width="396" height="28" rx="6" fill="#ECFDF5" stroke="#A7F3D0"/>
+  <text x="914" y="698" font-size="11" font-weight="600" fill="#065F46">✓ Reviewed by admin_01 · 2026-11-26 (ADMIN_REVIEW_LOG)</text>
+
+  <!-- Dashed Empty State Wireframe (0 reports) -->
+  <rect x="882" y="742" width="432" height="196" rx="10" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="900" y="766" font-size="10.5" font-weight="700" fill="#475569" letter-spacing="0.4">EMPTY STATE WIREFRAME (0 REPORTS · T44)</text>
+  <circle cx="1098" cy="806" r="18" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <text x="1098" y="811" font-size="14" font-weight="700" fill="#64748B" text-anchor="middle">0</text>
+  <text x="1098" y="846" font-size="13" font-weight="700" fill="#334155" text-anchor="middle">No reports submitted yet</text>
+  <text x="1098" y="866" font-size="11.5" fill="#64748B" text-anchor="middle">Submitted issues and admin status updates appear here</text>
+  <rect x="1028" y="884" width="140" height="32" rx="6" fill="#FFFFFF" stroke="#64748B" stroke-width="1.2"/>
+  <text x="1098" y="904" font-size="12" font-weight="600" fill="#1E293B" text-anchor="middle">+ New Report</text>
+
+
+  <!-- ===================================================================== -->
+  <!-- RIGHT FRAME: MOBILE VIEWPORT (375 x 812 · T44)                        -->
+  <!-- ===================================================================== -->
+  <text x="1450" y="114" font-size="12" font-weight="700" fill="#475569" letter-spacing="0.8">MOBILE VIEWPORT (375 × 812 · T44)</text>
+
+  <!-- Phone Bezel -->
+  <rect x="1450" y="124" width="400" height="856" rx="34" fill="#FFFFFF" stroke="#1E293B" stroke-width="6" filter="url(#shadow-md)"/>
+
+  <!-- Phone Status Bar -->
+  <rect x="1456" y="130" width="388" height="32" rx="24" fill="#FFFFFF"/>
+  <text x="1484" y="151" font-size="12" font-weight="700" fill="#0F172A">9:41</text>
+  <rect x="1612" y="137" width="76" height="16" rx="8" fill="#1E293B"/>
+  <rect x="1784" y="143" width="4" height="8" rx="1" fill="#0F172A"/>
+  <rect x="1790" y="140" width="4" height="11" rx="1" fill="#0F172A"/>
+  <rect x="1796" y="137" width="4" height="14" rx="1" fill="#0F172A"/>
+  <rect x="1808" y="140" width="20" height="11" rx="2" fill="none" stroke="#0F172A" stroke-width="1.5"/>
+  <rect x="1810" y="142" width="14" height="7" rx="1" fill="#0F172A"/>
+
+  <!-- Compact Mobile Header -->
+  <rect x="1456" y="162" width="388" height="44" fill="#FFFFFF"/>
+  <line x1="1456" y1="206" x2="1844" y2="206" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="1474" y="190" font-size="15.5" font-weight="700" fill="#0F172A">FaciliMap · Report Issue</text>
+  <rect x="1748" y="173" width="80" height="22" rx="6" fill="#EFF6FF" stroke="#93C5FD"/>
+  <text x="1788" y="188" font-size="10.5" font-weight="700" fill="#1D4ED8" text-anchor="middle">Facility #101</text>
+
+  <!-- Segmented Switcher (Submit Report | My Reports) -->
+  <rect x="1472" y="216" width="356" height="38" rx="10" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+  <rect x="1476" y="220" width="174" height="30" rx="7" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" filter="url(#shadow-sm)"/>
+  <text x="1563" y="239" font-size="12" font-weight="700" fill="#0F172A" text-anchor="middle">Submit Report</text>
+  <text x="1738" y="239" font-size="12" font-weight="600" fill="#64748B" text-anchor="middle">My Reports (2)</text>
+  <circle cx="1828" cy="216" r="10" fill="#0F172A"/>
+  <text x="1828" y="220" font-size="10.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">6</text>
+
+  <!-- Mobile Facility Dropdown -->
+  <text x="1472" y="274" font-size="11" font-weight="700" fill="#334155">Linked Facility (optional)</text>
+  <rect x="1472" y="280" width="356" height="34" rx="8" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.2"/>
+  <text x="1486" y="301" font-size="11.5" font-weight="600" fill="#0F172A">Block A Water Dispenser (#101)</text>
+  <text x="1814" y="301" font-size="12" font-weight="700" fill="#475569" text-anchor="end">▾</text>
+
+  <!-- Mobile Compact Draggable Pin Map (T37) -->
+  <text x="1472" y="334" font-size="11" font-weight="700" fill="#334155">Drag Pin to Exact Location (T37)</text>
+  <circle cx="1668" cy="330" r="10" fill="#0F172A"/>
+  <text x="1668" y="334" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+
+  <rect x="1472" y="340" width="356" height="114" rx="8" fill="#E8EEF5" stroke="#94A3B8" stroke-width="1.2"/>
+  <path d="M1474 438 Q1650 420 1826 376" fill="none" stroke="#FFFFFF" stroke-width="14" stroke-linecap="butt"/>
+  <rect x="1576" y="358" width="124" height="62" rx="6" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1"/>
+  <text x="1638" y="412" font-size="10" font-weight="700" fill="#475569" text-anchor="middle">Block A</text>
+  <g transform="translate(1624, 360)">
+    <circle cx="14" cy="14" r="19" fill="#EA580C" fill-opacity="0.2" stroke="#EA580C" stroke-width="1.2" stroke-dasharray="3,2"/>
+    <path d="M14 0 C6.3 0 0 6.3 0 14 C0 24 14 34 14 34 C14 34 28 24 28 14 C28 6.3 21.7 0 14 0 Z" fill="#EA580C" stroke="#FFFFFF" stroke-width="1.8"/>
+    <circle cx="14" cy="13" r="4" fill="#FFFFFF"/>
+  </g>
+  <rect x="1742" y="348" width="78" height="24" rx="6" fill="#FFFFFF" stroke="#94A3B8"/>
+  <text x="1781" y="364" font-size="10.5" font-weight="600" fill="#1E293B" text-anchor="middle">◎ GPS</text>
+
+  <!-- Mobile GPS Readout -->
+  <rect x="1472" y="458" width="356" height="26" rx="6" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="1650" y="475" font-size="11" font-family="Consolas, monospace" font-weight="700" fill="#334155" text-anchor="middle">Lat: 3.128240  |  Lng: 101.650670</text>
+
+  <!-- Mobile Description Textarea -->
+  <text x="1472" y="504" font-size="11" font-weight="700" fill="#334155">Issue Description *</text>
+  <circle cx="1592" cy="500" r="10" fill="#0F172A"/>
+  <text x="1592" y="504" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+  <text x="1828" y="504" font-size="10.5" fill="#64748B" text-anchor="end">86 / 500</text>
+
+  <rect x="1472" y="510" width="356" height="68" rx="8" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.2"/>
+  <text x="1486" y="532" font-size="11.5" fill="#0F172A">Cold water nozzle is leaking onto the</text>
+  <text x="1486" y="550" font-size="11.5" fill="#0F172A">corridor floor near Block A lobby.</text>
+
+  <!-- Mobile Photo Attachment -->
+  <rect x="1472" y="590" width="356" height="40" rx="8" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <text x="1488" y="614" font-size="11.5" font-weight="600" fill="#334155">+ Photo (Optional):</text>
+  <rect x="1652" y="598" width="164" height="24" rx="6" fill="#EFF6FF" stroke="#93C5FD"/>
+  <text x="1734" y="614" font-size="10.5" font-weight="600" fill="#1D4ED8" text-anchor="middle">IMG_4021.jpg ×</text>
+
+  <!-- Mobile PDPA Box (T36) -->
+  <rect x="1472" y="644" width="356" height="82" rx="8" fill="#FFFBEB" stroke="#FCD34D" stroke-width="1.3"/>
+  <circle cx="1828" cy="644" r="10" fill="#0F172A"/>
+  <text x="1828" y="648" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+  <rect x="1486" y="658" width="18" height="18" rx="4" fill="#0F172A"/>
+  <path d="M1489.5 667 L1493 670.5 L1500.5 662.5" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="1514" y="672" font-size="11.5" font-weight="700" fill="#92400E">PDPA Consent (Required)</text>
+  <text x="1514" y="692" font-size="10.5" fill="#78350F">Store my user ID, GPS &amp; photo solely for</text>
+  <text x="1514" y="708" font-size="10.5" fill="#78350F">campus facility maintenance review.</text>
+
+  <!-- Mobile Primary Submit CTA (44px+ touch target) -->
+  <rect x="1472" y="744" width="356" height="48" rx="10" fill="#0F172A"/>
+  <text x="1650" y="773" font-size="13.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">Submit Issue Report →</text>
+  <circle cx="1472" cy="744" r="10" fill="#EA580C"/>
+  <text x="1472" y="748" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+
+  <text x="1650" y="818" font-size="10.5" fill="#64748B" text-anchor="middle">After submit → switches to "My Reports (2)" tracker</text>
+
+  <!-- Mobile Bottom Tab Bar (44px+ touch targets) -->
+  <path d="M1456 902 L1844 902 L1844 948 Q1844 974 1818 974 L1482 974 Q1456 974 1456 948 Z" fill="#FFFFFF"/>
+  <line x1="1456" y1="902" x2="1844" y2="902" stroke="#CBD5E1" stroke-width="1.2"/>
+
+  <!-- Tab 1: Map -->
+  <circle cx="1511" cy="926" r="6" fill="none" stroke="#64748B" stroke-width="1.6"/>
+  <text x="1511" y="950" font-size="11.5" font-weight="600" fill="#64748B" text-anchor="middle">Map</text>
+
+  <!-- Tab 2: Report (Active) -->
+  <rect x="1563" y="908" width="82" height="54" rx="8" fill="#F1F5F9"/>
+  <rect x="1589" y="902" width="30" height="3" rx="1.5" fill="#0F172A"/>
+  <circle cx="1604" cy="926" r="6" fill="none" stroke="#0F172A" stroke-width="1.8"/>
+  <line x1="1604" y1="923" x2="1604" y2="929" stroke="#0F172A" stroke-width="1.8"/>
+  <line x1="1601" y1="926" x2="1607" y2="926" stroke="#0F172A" stroke-width="1.8"/>
+  <text x="1604" y="950" font-size="11.5" font-weight="700" fill="#0F172A" text-anchor="middle">Report</text>
+
+  <!-- Tab 3: My Reports -->
+  <rect x="1690" y="920" width="12" height="12" rx="2" fill="none" stroke="#64748B" stroke-width="1.6"/>
+  <text x="1696" y="950" font-size="11.5" font-weight="600" fill="#64748B" text-anchor="middle">My Reports</text>
+
+  <!-- Tab 4: Admin -->
+  <rect x="1784" y="920" width="12" height="12" rx="6" fill="none" stroke="#64748B" stroke-width="1.6"/>
+  <text x="1790" y="950" font-size="11.5" font-weight="600" fill="#64748B" text-anchor="middle">Admin</text>
+
+
+  <!-- ===================================================================== -->
+  <!-- BOTTOM ANNOTATION BAR (y=1002..1100)                                  -->
+  <!-- ===================================================================== -->
+  <rect x="40" y="1002" width="1840" height="98" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="64" y="1026" font-size="11.5" font-weight="700" fill="#475569" letter-spacing="0.6">WIREFRAME ANNOTATIONS &amp; DOWNSTREAM TASK MAPPING (T09 → T08, T36, T37, T38, T44)</text>
+
+  <!-- Annotation 1 -->
+  <circle cx="76" cy="1052" r="10" fill="#0F172A"/>
+  <text x="76" y="1056" font-size="10.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+  <text x="94" y="1055" font-size="12" font-weight="700" fill="#0F172A">T37 Draggable Report Pin</text>
+  <text x="94" y="1073" font-size="11" fill="#64748B">Drag marker or tap GPS to set lat/lng</text>
+
+  <!-- Annotation 2 -->
+  <circle cx="378" cy="1052" r="10" fill="#0F172A"/>
+  <text x="378" y="1056" font-size="10.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+  <text x="396" y="1055" font-size="12" font-weight="700" fill="#0F172A">T08 ISSUE_REPORT Fields</text>
+  <text x="396" y="1073" font-size="11" fill="#64748B">facility_id, description, photo_ref</text>
+
+  <!-- Annotation 3 -->
+  <circle cx="678" cy="1052" r="10" fill="#0F172A"/>
+  <text x="678" y="1056" font-size="10.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+  <text x="696" y="1055" font-size="12" font-weight="700" fill="#0F172A">T36 Required PDPA Box</text>
+  <text x="696" y="1073" font-size="11" fill="#64748B">Mandatory consent before submission</text>
+
+  <!-- Annotation 4 -->
+  <circle cx="988" cy="1052" r="10" fill="#EA580C"/>
+  <text x="988" y="1056" font-size="10.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+  <text x="1006" y="1055" font-size="12" font-weight="700" fill="#0F172A">T36 Validation &amp; Submit</text>
+  <text x="1006" y="1073" font-size="11" fill="#64748B">Validates inputs &amp; updates tracker</text>
+
+  <!-- Annotation 5 -->
+  <circle cx="1294" cy="1052" r="10" fill="#0F172A"/>
+  <text x="1294" y="1056" font-size="10.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+  <text x="1312" y="1055" font-size="12" font-weight="700" fill="#0F172A">T38 My Reports Tracker UI</text>
+  <text x="1312" y="1073" font-size="11" fill="#64748B">Status steps, review log &amp; empty state</text>
+
+  <!-- Annotation 6 -->
+  <circle cx="1596" cy="1052" r="10" fill="#0F172A"/>
+  <text x="1596" y="1056" font-size="10.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">6</text>
+  <text x="1614" y="1055" font-size="12" font-weight="700" fill="#0F172A">T44 Mobile 375px Layout</text>
+  <text x="1614" y="1073" font-size="11" fill="#64748B">Segmented switcher + 44px+ buttons</text>
+</svg>

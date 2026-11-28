@@ -1,11 +1,22 @@
 import { FACILIMAP_CONFIG } from './config.js';
 import { createCampusMap } from './map.js';
+import {
+  renderFacilityPins,
+  getCategoryPinMeta,
+  getMarkerAccessibleName,
+  getStatusBadgeClass,
+  escapeHtml,
+} from './pins.js';
+import { SAMPLE_FCSIT_FACILITIES } from './sampleFacilities.js';
 
 const state = {
   activeView: 'map',
   activeCategory: 'all',
   searchQuery: '',
   sheetExpanded: false,
+  facilities: [...SAMPLE_FCSIT_FACILITIES],
+  selectedFacilityId: null,
+  markersById: new Map(),
   mapController: null,
 };
 
@@ -20,10 +31,13 @@ function getElements() {
     searchClearBtn: document.getElementById('search-clear-btn'),
     resetFiltersBtn: document.getElementById('btn-reset-filters'),
     resultsSummary: document.getElementById('results-summary'),
+    facilityList: document.getElementById('facility-list'),
+    emptyStateCard: document.getElementById('empty-state-card'),
     emptyTitle: document.getElementById('empty-state-title'),
     emptyDesc: document.getElementById('empty-state-desc'),
     facilityPanel: document.getElementById('facility-panel'),
     sheetToggleBtn: document.getElementById('sheet-toggle-btn'),
+    sheetPeekTitle: document.getElementById('sheet-peek-title'),
     sheetPeekHint: document.querySelector('.sheet-peek-hint'),
     centerMapBtn: document.getElementById('btn-center-map'),
     locateMeBtn: document.getElementById('btn-locate-me'),
@@ -31,6 +45,8 @@ function getElements() {
     mapToast: document.getElementById('map-toast'),
     mapFallback: document.getElementById('map-fallback'),
     facilityModal: document.getElementById('facility-modal'),
+    modalTitle: document.getElementById('modal-title'),
+    modalBody: document.getElementById('modal-body'),
     modalCloseBtn: document.getElementById('modal-close-btn'),
     statusPillText: document.getElementById('status-pill-text'),
   };
@@ -49,6 +65,141 @@ function showMapToast(els, message) {
 function updateCoordsReadout(els, viewport) {
   if (!els.coordsPill || !viewport) return;
   els.coordsPill.textContent = `${viewport.lat.toFixed(4)}, ${viewport.lng.toFixed(4)} · Z${viewport.zoom}`;
+}
+
+function getFilteredFacilities() {
+  const query = state.searchQuery.trim().toLowerCase();
+  return state.facilities.filter((item) => {
+    if (state.activeCategory !== 'all' && item.icon_key !== state.activeCategory) {
+      return false;
+    }
+    if (!query) return true;
+    const haystack = [item.name, item.building, item.floor, item.category_name]
+      .filter(Boolean)
+      .join(' ')
+      .toLowerCase();
+    return haystack.includes(query);
+  });
+}
+
+function openFacilityModal(facility, els) {
+  if (!els.facilityModal || !els.modalTitle || !els.modalBody) return;
+  const meta = getCategoryPinMeta(facility.icon_key);
+  const statusClass = getStatusBadgeClass(facility.status);
+  els.modalTitle.textContent = getMarkerAccessibleName(facility);
+  els.modalBody.innerHTML = `
+    <div class="facility-popup-badges" style="margin-bottom:14px;">
+      <span class="cat-pill" style="background:${meta.bgTint};border-color:${meta.borderTint};color:${meta.textColor};">
+        ${escapeHtml(facility.category_name || meta.label)} (${escapeHtml(meta.icon_key)})
+      </span>
+      <span class="state-pill ${statusClass}">${escapeHtml(facility.status || 'Operational')}</span>
+    </div>
+    <div class="facility-popup-meta" style="gap:8px;font-size:0.88rem;">
+      <div><strong>Building:</strong> ${escapeHtml(facility.building || 'FCSIT')}</div>
+      <div><strong>Floor:</strong> ${escapeHtml(facility.floor || 'Ground')}</div>
+      <div><strong>Opening Hours:</strong> ${escapeHtml(facility.opening_hours || '07:00 – 22:00')}</div>
+      <div><strong>Coordinates:</strong> ${Number(facility.latitude).toFixed(5)}, ${Number(facility.longitude).toFixed(5)}</div>
+      <div><strong>Last Verified:</strong> ${escapeHtml(facility.last_verified_at || 'Pending')}</div>
+    </div>
+  `;
+  els.facilityModal.hidden = false;
+}
+
+function renderFacilityCards(filtered, els) {
+  if (!els.facilityList || !els.emptyStateCard) return;
+
+  els.facilityList.querySelectorAll('.facility-card').forEach((node) => node.remove());
+
+  if (filtered.length === 0) {
+    els.emptyStateCard.hidden = false;
+    return;
+  }
+
+  els.emptyStateCard.hidden = true;
+  const fragment = document.createDocumentFragment();
+
+  filtered.forEach((facility) => {
+    const meta = getCategoryPinMeta(facility.icon_key);
+    const statusClass = getStatusBadgeClass(facility.status);
+    const isSelected =
+      state.selectedFacilityId != null && String(facility.facility_id) === String(state.selectedFacilityId);
+
+    const card = document.createElement('button');
+    card.type = 'button';
+    card.className = `facility-card${isSelected ? ' is-selected' : ''}`;
+    card.dataset.facilityId = String(facility.facility_id);
+    card.innerHTML = `
+      <div class="facility-card-top">
+        <span class="facility-card-name">${escapeHtml(getMarkerAccessibleName(facility))}</span>
+        <span class="state-pill ${statusClass}">${escapeHtml(facility.status || 'Operational')}</span>
+      </div>
+      <div class="facility-card-cat" style="color:${meta.textColor};">
+        ${meta.svg}
+        <span>${escapeHtml(facility.category_name || meta.label)}</span>
+      </div>
+      <div class="facility-card-meta">
+        <span>${escapeHtml([facility.building, facility.floor].filter(Boolean).join(' · '))}</span>
+        <span>${escapeHtml(facility.opening_hours || '07:00 – 22:00')} · Verified ${escapeHtml(facility.last_verified_at || 'Pending')}</span>
+      </div>
+    `;
+
+    card.addEventListener('click', () => selectFacility(facility.facility_id, els));
+    fragment.appendChild(card);
+  });
+
+  els.facilityList.prepend(fragment);
+}
+
+function renderFacilities(els) {
+  const filtered = getFilteredFacilities();
+  const hasFilter = state.activeCategory !== 'all' || state.searchQuery.trim().length > 0;
+
+  if (els.searchClearBtn) {
+    els.searchClearBtn.hidden = state.searchQuery.length === 0;
+  }
+  if (els.resetFiltersBtn) {
+    els.resetFiltersBtn.hidden = !hasFilter;
+  }
+
+  if (els.resultsSummary) {
+    els.resultsSummary.textContent = `Showing ${filtered.length} of ${state.facilities.length} FCSIT facilities`;
+  }
+  if (els.sheetPeekTitle) {
+    els.sheetPeekTitle.textContent = `${filtered.length} Facilities near FCSIT`;
+  }
+
+  if (els.emptyTitle && els.emptyDesc) {
+    if (hasFilter && filtered.length === 0) {
+      els.emptyTitle.textContent = 'No facilities found for query';
+      els.emptyDesc.textContent = 'Clear search keywords or switch category filter.';
+    } else {
+      els.emptyTitle.textContent = 'No facilities loaded yet';
+      els.emptyDesc.textContent = 'Waiting for facility coordinates.';
+    }
+  }
+
+  renderFacilityCards(filtered, els);
+
+  if (state.mapController?.facilityLayer) {
+    state.markersById = renderFacilityPins(state.mapController.facilityLayer, filtered, {
+      selectedFacilityId: state.selectedFacilityId,
+      onSelect: (id, meta) => selectFacility(id, els, meta),
+      onOpenDetails: (facility) => openFacilityModal(facility, els),
+    });
+  }
+}
+
+function selectFacility(facilityId, els, { fromMarker = false } = {}) {
+  state.selectedFacilityId = facilityId;
+  renderFacilities(els);
+
+  const marker = state.markersById.get(String(facilityId));
+  if (!marker) return;
+
+  if (!fromMarker && state.mapController?.map) {
+    state.mapController.map.panTo(marker.getLatLng(), { animate: true });
+  }
+  marker.openPopup();
 }
 
 function initCampusMap(els) {
@@ -93,35 +244,6 @@ function switchView(viewName, els) {
   }
 }
 
-function updateFilterUI(els) {
-  const hasFilter = state.activeCategory !== 'all' || state.searchQuery.trim().length > 0;
-
-  if (els.searchClearBtn) {
-    els.searchClearBtn.hidden = state.searchQuery.length === 0;
-  }
-  if (els.resetFiltersBtn) {
-    els.resetFiltersBtn.hidden = !hasFilter;
-  }
-
-  if (els.resultsSummary) {
-    els.resultsSummary.textContent = hasFilter
-      ? 'Filters active (awaiting T17 facility pins)'
-      : 'FCSIT Map ready (3.1282, 101.6506)';
-  }
-
-  if (els.emptyTitle && els.emptyDesc) {
-    if (hasFilter) {
-      els.emptyTitle.textContent = 'No matching facilities yet';
-      els.emptyDesc.textContent =
-        'Filter state is active. Custom category pins and live search will populate in T17–T19.';
-    } else {
-      els.emptyTitle.textContent = 'No facilities loaded yet';
-      els.emptyDesc.textContent =
-        'T16 FCSIT map active at (3.1282, 101.6506). Custom category pins will populate in T17.';
-    }
-  }
-}
-
 function bindEvents(els) {
   els.viewTargetButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -139,14 +261,14 @@ function bindEvents(els) {
         item.classList.toggle('is-active', active);
         item.setAttribute('aria-pressed', String(active));
       });
-      updateFilterUI(els);
+      renderFacilities(els);
     });
   });
 
   if (els.searchInput) {
     els.searchInput.addEventListener('input', (event) => {
       state.searchQuery = event.target.value;
-      updateFilterUI(els);
+      renderFacilities(els);
     });
   }
 
@@ -157,7 +279,7 @@ function bindEvents(els) {
         els.searchInput.value = '';
         els.searchInput.focus();
       }
-      updateFilterUI(els);
+      renderFacilities(els);
     });
   }
 
@@ -171,7 +293,7 @@ function bindEvents(els) {
         chip.classList.toggle('is-active', isAll);
         chip.setAttribute('aria-pressed', String(isAll));
       });
-      updateFilterUI(els);
+      renderFacilities(els);
     });
   }
 
@@ -236,7 +358,7 @@ function bootstrap() {
   const els = getElements();
   initCampusMap(els);
   bindEvents(els);
-  updateFilterUI(els);
+  renderFacilities(els);
 
   if (new URLSearchParams(window.location.search).get('probeApi') === '1') {
     checkApiHealth(els);
@@ -250,10 +372,20 @@ function bootstrap() {
     get facilityLayer() {
       return state.mapController?.facilityLayer ?? null;
     },
+    setFacilities: (list) => {
+      state.facilities = Array.isArray(list) ? list : [];
+      state.selectedFacilityId = null;
+      renderFacilities(els);
+    },
+    selectFacility: (id) => selectFacility(id, els),
     centerOnFcsit: () => state.mapController?.centerOnFcsit(),
     locateUser: () => state.mapController?.locateUser(),
     getViewport: () => state.mapController?.getViewport() ?? null,
-    getState: () => ({ ...state, mapController: undefined }),
+    getState: () => ({
+      ...state,
+      markersById: undefined,
+      mapController: undefined,
+    }),
     switchView: (viewName) => switchView(viewName, els),
     checkApiHealth: () => checkApiHealth(els),
   };

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FaciliMap — FCSIT Campus Facility Finder</title>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    crossorigin=""
+  />
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+  <!-- Top App Header -->
+  <header class="app-header">
+    <div class="brand-group">
+      <a href="#map" class="brand-logo" data-view-link="map" aria-label="FaciliMap Home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 21s-6-5.686-6-10a6 6 0 1 1 12 0c0 4.314-6 10-6 10Z" />
+            <circle cx="12" cy="11" r="2.2" fill="currentColor" stroke="none" />
+          </svg>
+        </span>
+        <span class="brand-name">FaciliMap</span>
+      </a>
+      <span class="campus-badge">FCSIT · UM</span>
+    </div>
+
+    <!-- Search Bar (Foundation for T18 Live Keyword Search) -->
+    <div class="search-wrap" role="search">
+      <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <circle cx="11" cy="11" r="7" />
+        <path d="m20 20-3.5-3.5" stroke-linecap="round" />
+      </svg>
+      <input
+        id="search-input"
+        class="search-input"
+        type="search"
+        placeholder="Search facility, building, or floor..."
+        aria-label="Search facility, building, or floor"
+        autocomplete="off"
+      />
+      <button
+        id="search-clear-btn"
+        class="search-clear-btn"
+        type="button"
+        aria-label="Clear search"
+        hidden
+      >
+        &times;
+      </button>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav" aria-label="Primary Navigation">
+      <button type="button" class="nav-btn is-active" data-view-target="map" aria-current="page">Map</button>
+      <button type="button" class="nav-btn" data-view-target="report">Report Issue</button>
+      <button type="button" class="nav-btn" data-view-target="my-reports">My Reports</button>
+      <button type="button" class="nav-btn" data-view-target="admin">Admin Dashboard</button>
+    </nav>
+
+    <span id="status-pill" class="status-pill" title="Frontend Leaflet & OSM Base">
+      <span class="status-dot" aria-hidden="true"></span>
+      <span id="status-pill-text">OSM Ready</span>
+    </span>
+  </header>
+
+  <!-- Main Workspace -->
+  <main class="app-main">
+    <!-- Screen 1: Map View -->
+    <section id="view-map" class="view-section view-map is-active" aria-label="Campus Map View">
+      <!-- Desktop Sidebar / Mobile Collapsible Bottom Sheet -->
+      <aside id="facility-panel" class="facility-panel" aria-label="Facility Filters and Results">
+        <button
+          id="sheet-toggle-btn"
+          class="sheet-handle-btn"
+          type="button"
+          aria-expanded="false"
+          aria-controls="facility-panel-body"
+          aria-label="Toggle facility list panel"
+        >
+          <span class="sheet-handle-bar" aria-hidden="true"></span>
+          <span class="sheet-peek-row">
+            <span id="sheet-peek-title" class="sheet-peek-title">FCSIT Campus Map</span>
+            <span class="sheet-peek-hint">Tap to expand</span>
+          </span>
+        </button>
+
+        <div id="facility-panel-body" class="facility-panel-body">
+          <div class="panel-section">
+            <h2 class="panel-heading">Category Filters</h2>
+            <div id="category-chips" class="category-chips" role="group" aria-label="Facility category filters">
+              <button type="button" class="chip-btn is-active" data-category="all" aria-pressed="true">
+                All
+              </button>
+              <button type="button" class="chip-btn chip-motorcycle" data-category="motorcycle_parking" aria-pressed="false">
+                <svg viewBox="0 0 22 22" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <circle cx="5.5" cy="14" r="3" />
+                  <circle cx="16.5" cy="14" r="3" />
+                  <path d="M5.5 14h3.5l3-5.5h3.5l1 5.5M10 8.5l-2-2M14 6.5h2.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Motorcycle Parking
+              </button>
+              <button type="button" class="chip-btn chip-water" data-category="water_dispenser" aria-pressed="false">
+                <svg viewBox="0 0 22 22" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path d="M11 3.5S5.5 10 5.5 13.5a5.5 5.5 0 0 0 11 0C16.5 10 11 3.5 11 3.5Z" stroke-linejoin="round" />
+                </svg>
+                Water Dispenser
+              </button>
+              <button type="button" class="chip-btn chip-toilet" data-category="toilet" aria-pressed="false">
+                <svg viewBox="0 0 22 22" width="15" height="15" fill="currentColor" aria-hidden="true">
+                  <circle cx="7.5" cy="5.5" r="1.6" />
+                  <path d="M5.5 9.5A1.5 1.5 0 0 1 7 8h1a1.5 1.5 0 0 1 1.5 1.5V13h-1v5h-2v-5h-1V9.5Z" />
+                  <circle cx="14.5" cy="5.5" r="1.6" />
+                  <path d="M12.7 8.5c.2-.4.7-.5 1.8-.5s1.6.1 1.8.5l1 5.5h-1.6v4h-2.4v-4h-1.6l1-5.5Z" />
+                </svg>
+                Toilet
+              </button>
+            </div>
+          </div>
+
+          <div class="results-bar">
+            <span id="results-summary" class="results-summary">FCSIT Map ready (3.1282, 101.6506)</span>
+          </div>
+
+          <div id="facility-list" class="facility-list">
+            <div id="empty-state-card" class="empty-state-card">
+              <div class="empty-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M12 21s-6-5.686-6-10a6 6 0 1 1 12 0c0 4.314-6 10-6 10Z" />
+                  <circle cx="12" cy="11" r="2.2" />
+                </svg>
+              </div>
+              <h3 id="empty-state-title" class="empty-title">No facilities loaded yet</h3>
+              <p id="empty-state-desc" class="empty-desc">
+                T16 FCSIT map active at (3.1282, 101.6506). Custom category pins will populate in T17.
+              </p>
+              <button id="btn-reset-filters" class="btn btn-secondary btn-sm" type="button" hidden>
+                Reset Filters
+              </button>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Interactive Map Stage -->
+      <div class="map-stage">
+        <div id="map" class="map-canvas" role="region" aria-label="FCSIT Campus OpenStreetMap"></div>
+
+        <div id="map-fallback" class="map-fallback" hidden>
+          <p class="map-fallback-title">Map library could not load</p>
+          <p class="map-fallback-desc">Check network access to the Leaflet CDN / OpenStreetMap tiles and reload.</p>
+        </div>
+
+        <div class="map-toolbar" role="group" aria-label="Map navigation controls">
+          <button
+            id="btn-center-map"
+            class="map-control-btn"
+            type="button"
+            title="Center map on FCSIT UM (3.1282, 101.6506)"
+            aria-label="Center map on FCSIT"
+          >
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="7" />
+              <circle cx="12" cy="12" r="2" fill="currentColor" />
+              <path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke-linecap="round" />
+            </svg>
+            <span>Center FCSIT</span>
+          </button>
+
+          <button
+            id="btn-locate-me"
+            class="map-control-btn"
+            type="button"
+            title="Use my GPS location"
+            aria-label="Locate me"
+          >
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <polygon points="3 11 22 2 13 21 11 13 3 11" stroke-linejoin="round" />
+            </svg>
+            <span class="map-btn-label">My Location</span>
+          </button>
+        </div>
+
+        <div id="map-coords-pill" class="map-coords-pill" aria-live="polite">3.1282, 101.6506 · Z17</div>
+        <div id="map-legend" class="map-legend" aria-label="Facility Category Pin Legend">
+          <div class="legend-title">Pin Legend (T07)</div>
+          <div class="legend-items">
+            <span class="legend-item">
+              <span class="legend-dot legend-dot-motorcycle" aria-hidden="true"></span>
+              Motorcycle Parking
+            </span>
+            <span class="legend-item">
+              <span class="legend-dot legend-dot-water" aria-hidden="true"></span>
+              Water Dispenser
+            </span>
+            <span class="legend-item">
+              <span class="legend-dot legend-dot-toilet" aria-hidden="true"></span>
+              Toilet
+            </span>
+          </div>
+        </div>
+        <div id="map-toast" class="map-toast" role="status" aria-live="polite" hidden></div>
+
+        <button
+          id="btn-fab-report"
+          class="fab-report-btn"
+          type="button"
+          data-view-target="report"
+          aria-label="Report Facility Issue"
+        >
+          <span aria-hidden="true">+</span>
+          <span class="fab-label">Report Issue</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Screen 3 Placeholder: Report Issue Form -->
+    <section id="view-report" class="view-section view-placeholder" aria-label="Report Issue View" hidden>
+      <div class="placeholder-card">
+        <span class="placeholder-badge">Upcoming · T36 &amp; T37</span>
+        <h1>Report a Facility Issue</h1>
+        <p>The interactive report form, draggable issue pin, photo attachment, and PDPA consent box will be implemented here.</p>
+        <button type="button" class="btn btn-primary" data-view-target="map">&larr; Back to Map</button>
+      </div>
+    </section>
+
+    <!-- Screen 3 Placeholder: My Reports Tracker -->
+    <section id="view-my-reports" class="view-section view-placeholder" aria-label="My Reports View" hidden>
+      <div class="placeholder-card">
+        <span class="placeholder-badge">Upcoming · T38</span>
+        <h1>My Reports Tracker</h1>
+        <p>Submitted campus facility reports and status progress updates will appear here.</p>
+        <button type="button" class="btn btn-primary" data-view-target="map">&larr; Back to Map</button>
+      </div>
+    </section>
+
+    <!-- Screen 4 Placeholder: Admin Dashboard -->
+    <section id="view-admin" class="view-section view-placeholder" aria-label="Admin Dashboard View" hidden>
+      <div class="placeholder-card">
+        <span class="placeholder-badge">Upcoming · T27, T28 &amp; T39</span>
+        <h1>Admin Dashboard</h1>
+        <p>Admin authentication, facility CRUD table, Verify Now timestamping, and review queue will be implemented here.</p>
+        <button type="button" class="btn btn-primary" data-view-target="map">&larr; Back to Map</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Screen 2 Shell: Facility Detail Modal (T26) -->
+  <div id="facility-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2 id="modal-title">Facility Details</h2>
+        <button id="modal-close-btn" class="icon-close-btn" type="button" aria-label="Close modal">&times;</button>
+      </div>
+      <div id="modal-body" class="modal-body">
+        <p>Facility detail content will be populated in T26.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Bottom Navigation Bar (T44) -->
+  <nav class="mobile-nav" aria-label="Mobile Navigation">
+    <button type="button" class="mobile-nav-btn is-active" data-view-target="map" aria-current="page">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z" stroke-linejoin="round" />
+      </svg>
+      <span>Map</span>
+    </button>
+    <button type="button" class="mobile-nav-btn" data-view-target="report">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 8v8M8 12h8" stroke-linecap="round" />
+      </svg>
+      <span>Report</span>
+    </button>
+    <button type="button" class="mobile-nav-btn" data-view-target="my-reports">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <rect x="4" y="4" width="16" height="16" rx="2" />
+        <path d="M8 9h8M8 13h8M8 17h5" stroke-linecap="round" />
+      </svg>
+      <span>My Reports</span>
+    </button>
+    <button type="button" class="mobile-nav-btn" data-view-target="admin">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <circle cx="12" cy="8" r="4" />
+        <path d="M4 20a8 8 0 0 1 16 0" stroke-linecap="round" />
+      </svg>
+      <span>Admin</span>
+    </button>
+  </nav>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    crossorigin=""
+  ></script>
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
